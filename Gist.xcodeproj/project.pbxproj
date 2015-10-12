@@ -15,6 +15,11 @@
 		182485D11BCBA1F60087D9F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182485CF1BCBA1F60087D9F3 /* LaunchScreen.storyboard */; };
 		182485DC1BCBA1F60087D9F3 /* GistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485DB1BCBA1F60087D9F3 /* GistTests.swift */; };
 		182485E71BCBA1F60087D9F3 /* GistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485E61BCBA1F60087D9F3 /* GistUITests.swift */; };
+		182485F61BCBA8200087D9F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182485F41BCBA8200087D9F3 /* Alamofire.framework */; };
+		182485F71BCBA8200087D9F3 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */; };
+		182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */; };
+		182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */; };
+		182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		182485F91BCBA8DF0087D9F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */,
+				182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		182485C11BCBA1F60087D9F3 /* Gist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182485C41BCBA1F60087D9F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +68,11 @@
 		182485E21BCBA1F60087D9F3 /* GistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		182485E61BCBA1F60087D9F3 /* GistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistUITests.swift; sourceTree = "<group>"; };
 		182485E81BCBA1F60087D9F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		182485F41BCBA8200087D9F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = Carthage/Build/iOS/SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
+		182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182485F61BCBA8200087D9F3 /* Alamofire.framework in Frameworks */,
+				182485F71BCBA8200087D9F3 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +105,10 @@
 		182485B81BCBA1F60087D9F3 = {
 			isa = PBXGroup;
 			children = (
+				182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */,
+				182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */,
+				182485F41BCBA8200087D9F3 /* Alamofire.framework */,
+				182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */,
 				182485C31BCBA1F60087D9F3 /* Gist */,
 				182485DA1BCBA1F60087D9F3 /* GistTests */,
 				182485E51BCBA1F60087D9F3 /* GistUITests */,
@@ -106,6 +136,7 @@
 				182485CD1BCBA1F60087D9F3 /* Assets.xcassets */,
 				182485CF1BCBA1F60087D9F3 /* LaunchScreen.storyboard */,
 				182485D21BCBA1F60087D9F3 /* Info.plist */,
+				182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */,
 			);
 			path = Gist;
 			sourceTree = "<group>";
@@ -138,6 +169,8 @@
 				182485BD1BCBA1F60087D9F3 /* Sources */,
 				182485BE1BCBA1F60087D9F3 /* Frameworks */,
 				182485BF1BCBA1F60087D9F3 /* Resources */,
+				182485F81BCBA8370087D9F3 /* ShellScript */,
+				182485F91BCBA8DF0087D9F3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -253,12 +286,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		182485F81BCBA8370087D9F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		182485BD1BCBA1F60087D9F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
+				182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */,
 				182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */,
 				182485C51BCBA1F60087D9F3 /* AppDelegate.swift in Sources */,
 			);
@@ -402,6 +454,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.Gist;
@@ -413,6 +469,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.Gist;
