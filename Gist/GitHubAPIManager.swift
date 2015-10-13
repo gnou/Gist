@@ -46,4 +46,12 @@ class GitHubAPIManager {
             alamofireManager = Alamofire.Manager(configuration: config)
         }
     }
+    
+    func getPublisGists(completion: (Result<[Gist]>) -> Void) {
+        let publicGistRequest = alamofireManager.request(.GET, "https://api.github.com/gists/public").responseArray { (req, res, result: Result<[Gist]>) -> Void in
+            completion(result)
+        }
+        debugPrint(publicGistRequest)
+    }
+    
 }

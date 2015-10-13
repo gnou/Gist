@@ -20,6 +20,11 @@
 		182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */; };
 		182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */; };
 		182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */; settings = {ASSET_TAGS = (); }; };
+		186B6D0C1BCD17A700660508 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186B6D0B1BCD17A700660508 /* Kingfisher.framework */; };
+		186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */; };
+		188A221E1BCCD13E0059C12B /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221D1BCCD13E0059C12B /* Gist.swift */; settings = {ASSET_TAGS = (); }; };
+		188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */; settings = {ASSET_TAGS = (); }; };
+		188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,7 @@
 			files = (
 				182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */,
 				182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */,
+				186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +79,11 @@
 		182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = Carthage/Build/iOS/SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
+		186B6D0B1BCD17A700660508 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Kingfisher.framework.dSYM; path = Carthage/Build/iOS/Kingfisher.framework.dSYM; sourceTree = "<group>"; };
+		188A221D1BCCD13E0059C12B /* Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseJSONObjectSerializable.swift; sourceTree = "<group>"; };
+		188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+JSONSerializable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +93,7 @@
 			files = (
 				182485F61BCBA8200087D9F3 /* Alamofire.framework in Frameworks */,
 				182485F71BCBA8200087D9F3 /* SwiftyJSON.framework in Frameworks */,
+				186B6D0C1BCD17A700660508 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +117,8 @@
 		182485B81BCBA1F60087D9F3 = {
 			isa = PBXGroup;
 			children = (
+				186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */,
+				186B6D0B1BCD17A700660508 /* Kingfisher.framework */,
 				182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */,
 				182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */,
 				182485F41BCBA8200087D9F3 /* Alamofire.framework */,
@@ -137,6 +151,9 @@
 				182485CF1BCBA1F60087D9F3 /* LaunchScreen.storyboard */,
 				182485D21BCBA1F60087D9F3 /* Info.plist */,
 				182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */,
+				188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */,
+				188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */,
+				188A221D1BCCD13E0059C12B /* Gist.swift */,
 			);
 			path = Gist;
 			sourceTree = "<group>";
@@ -295,6 +312,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			outputPaths = (
 			);
@@ -309,8 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188A221E1BCCD13E0059C12B /* Gist.swift in Sources */,
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
+				188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */,
 				182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */,
+				188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */,
 				182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */,
 				182485C51BCBA1F60087D9F3 /* AppDelegate.swift in Sources */,
 			);
@@ -547,6 +568,7 @@
 				182485ED1BCBA1F60087D9F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		182485EE1BCBA1F60087D9F3 /* Build configuration list for PBXNativeTarget "GistTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +577,7 @@
 				182485F01BCBA1F60087D9F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		182485F11BCBA1F60087D9F3 /* Build configuration list for PBXNativeTarget "GistUITests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +586,7 @@
 				182485F31BCBA1F60087D9F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
