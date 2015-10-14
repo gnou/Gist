@@ -14,9 +14,9 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var gists = [Gist]()
     
-    // Cache images
-    var imageCache = Dictionary<String, UIImage?>()
-
+    var nextPageURLString: String?
+    var isLoading = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,23 +32,49 @@ class MasterViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        
+        if self.refreshControl == nil {
+            self.refreshControl = UIRefreshControl()
+            self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        }
+        
         super.viewWillAppear(animated)
+    }
+    
+    func refresh(sender: AnyObject) {
+        nextPageURLString = nil
+        loadGists(nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loadGists()
+        loadGists(nil)
+        
+//        GitHubAPIManager.sharedManager.printMyStarredGistsWithBasicAuth()
+        GitHubAPIManager.sharedManager.doGetWithBasicAuth()
     }
     
-    func loadGists() {
-        GitHubAPIManager.sharedManager.getPublisGists { (result) -> Void in
+    func loadGists(urlToLoad: String?) {
+        isLoading = true
+        GitHubAPIManager.sharedManager.getPublisGists(urlToLoad) { (result, nextPage) -> Void in
+            self.nextPageURLString = nextPage
+            self.isLoading = false
+            
+            if self.refreshControl != nil && self.refreshControl!.refreshing {
+                self.refreshControl?.endRefreshing()
+            }
+            
             guard result.error == nil else {
                 print(result.error)
                 return
             }
             
             if let fetchedGists = result.value {
-                self.gists = fetchedGists
+                if self.nextPageURLString != nil {
+                    self.gists += fetchedGists
+                } else {
+                    self.gists = fetchedGists
+                }
             }
             self.tableView.reloadData()
         }
@@ -98,7 +124,17 @@ class MasterViewController: UITableViewController {
         
         if let urlString = gist.ownerAvatarURL,
             url = NSURL(string: urlString) {
-                cell.imageView?.kf_setImageWithURL(url)
+                cell.imageView?.kf_setImageWithURL(url, placeholderImage: UIImage(named: "avatar"))
+        } else {
+            cell.imageView?.image = UIImage(named: "avatar")
+        }
+        
+        let rowsToLoadFromBottom = 5
+        let rowsLoaded = gists.count
+        if let nextPage = nextPageURLString {
+            if (!isLoading && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom))) {
+                self.loadGists(nextPage)
+            }
         }
         
         return cell
