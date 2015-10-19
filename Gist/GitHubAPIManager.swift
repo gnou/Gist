@@ -90,7 +90,6 @@ class GitHubAPIManager {
         return nil
     }
     
-    
     func printMyStarredGistsWithBasicAuth() {
         let username = "gnou"
         let password = "tpasghbn23GITHUB"

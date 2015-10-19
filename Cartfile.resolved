@@ -1,3 +1,4 @@
 github "Alamofire/Alamofire" "2.0.2"
 github "onevcat/Kingfisher" "1.6.1"
+github "matthewpalmer/Locksmith" "2.0.3"
 github "SwiftyJSON/SwiftyJSON" "2.3.0"
