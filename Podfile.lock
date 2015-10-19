@@ -1,0 +1,13 @@
+PODS:
+  - R.swift (0.10.0)
+  - Reveal-iOS-SDK (1.6.0)
+
+DEPENDENCIES:
+  - R.swift
+  - Reveal-iOS-SDK
+
+SPEC CHECKSUMS:
+  R.swift: 35b88417f9f9ef7f5f9af4ec775df5e38fa1565a
+  Reveal-iOS-SDK: 6afacafd60f66f2822c09c43ae60562881bfab6e
+
+COCOAPODS: 0.38.2

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AF258992057DC4261A6E6A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4537E19965B6A6BE95DE9278 /* libPods.a */; };
 		182485C51BCBA1F60087D9F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C41BCBA1F60087D9F3 /* AppDelegate.swift */; };
 		182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C61BCBA1F60087D9F3 /* MasterViewController.swift */; };
 		182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C81BCBA1F60087D9F3 /* DetailViewController.swift */; };
@@ -17,14 +18,17 @@
 		182485E71BCBA1F60087D9F3 /* GistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485E61BCBA1F60087D9F3 /* GistUITests.swift */; };
 		182485F61BCBA8200087D9F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182485F41BCBA8200087D9F3 /* Alamofire.framework */; };
 		182485F71BCBA8200087D9F3 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */; };
-		182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */; };
-		182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */; };
-		182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */; settings = {ASSET_TAGS = (); }; };
+		182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */; };
+		182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */; };
+		182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */; };
+		1826CE511BD48C6C00E3F542 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1826CE501BD48C6C00E3F542 /* Locksmith.framework */; };
+		1826CE531BD48EF400E3F542 /* Locksmith.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 1826CE521BD48EF400E3F542 /* Locksmith.framework.dSYM */; };
 		186B6D0C1BCD17A700660508 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186B6D0B1BCD17A700660508 /* Kingfisher.framework */; };
-		186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */; };
-		188A221E1BCCD13E0059C12B /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221D1BCCD13E0059C12B /* Gist.swift */; settings = {ASSET_TAGS = (); }; };
-		188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */; settings = {ASSET_TAGS = (); }; };
-		188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */; settings = {ASSET_TAGS = (); }; };
+		186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */; };
+		188A221E1BCCD13E0059C12B /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221D1BCCD13E0059C12B /* Gist.swift */; };
+		188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */; };
+		188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */; };
+		18F6A7501BD497380028C730 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A74F1BD497380028C730 /* R.generated.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,16 +49,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		182485F91BCBA8DF0087D9F3 /* CopyFiles */ = {
+		182485F91BCBA8DF0087D9F3 /* Copy Files For Carthage Frameworks Symbol Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in CopyFiles */,
-				182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in CopyFiles */,
-				186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in CopyFiles */,
+				182485FC1BCBA9200087D9F3 /* Alamofire.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */,
+				182485FD1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */,
+				1826CE531BD48EF400E3F542 /* Locksmith.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */,
+				186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */,
 			);
+			name = "Copy Files For Carthage Frameworks Symbol Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -79,11 +85,18 @@
 		182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = Carthage/Build/iOS/SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
+		1826CE4E1BD48C6200E3F542 /* Locksmith.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Locksmith.framework.dSYM; path = Carthage/Build/iOS/Locksmith.framework.dSYM; sourceTree = "<group>"; };
+		1826CE501BD48C6C00E3F542 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		1826CE521BD48EF400E3F542 /* Locksmith.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Locksmith.framework.dSYM; path = Carthage/Build/iOS/Locksmith.framework.dSYM; sourceTree = "<group>"; };
 		186B6D0B1BCD17A700660508 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Kingfisher.framework.dSYM; path = Carthage/Build/iOS/Kingfisher.framework.dSYM; sourceTree = "<group>"; };
 		188A221D1BCCD13E0059C12B /* Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseJSONObjectSerializable.swift; sourceTree = "<group>"; };
 		188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+JSONSerializable.swift"; sourceTree = "<group>"; };
+		18F6A74F1BD497380028C730 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		3C2D96B316353639F266D822 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4537E19965B6A6BE95DE9278 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		682525B91595FDFA437C6C73 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +106,9 @@
 			files = (
 				182485F61BCBA8200087D9F3 /* Alamofire.framework in Frameworks */,
 				182485F71BCBA8200087D9F3 /* SwiftyJSON.framework in Frameworks */,
+				1826CE511BD48C6C00E3F542 /* Locksmith.framework in Frameworks */,
 				186B6D0C1BCD17A700660508 /* Kingfisher.framework in Frameworks */,
+				0AF258992057DC4261A6E6A1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,16 +132,14 @@
 		182485B81BCBA1F60087D9F3 = {
 			isa = PBXGroup;
 			children = (
-				186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */,
-				186B6D0B1BCD17A700660508 /* Kingfisher.framework */,
-				182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */,
-				182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */,
-				182485F41BCBA8200087D9F3 /* Alamofire.framework */,
-				182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */,
+				18F6A74F1BD497380028C730 /* R.generated.swift */,
+				1826CE541BD4902900E3F542 /* Carthage */,
 				182485C31BCBA1F60087D9F3 /* Gist */,
 				182485DA1BCBA1F60087D9F3 /* GistTests */,
 				182485E51BCBA1F60087D9F3 /* GistUITests */,
 				182485C21BCBA1F60087D9F3 /* Products */,
+				C456625C1DFBD024F71AE5EC /* Pods */,
+				30815EC0E8A993096C698B53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +189,39 @@
 			path = GistUITests;
 			sourceTree = "<group>";
 		};
+		1826CE541BD4902900E3F542 /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				1826CE521BD48EF400E3F542 /* Locksmith.framework.dSYM */,
+				1826CE501BD48C6C00E3F542 /* Locksmith.framework */,
+				1826CE4E1BD48C6200E3F542 /* Locksmith.framework.dSYM */,
+				186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */,
+				186B6D0B1BCD17A700660508 /* Kingfisher.framework */,
+				182485FA1BCBA9200087D9F3 /* Alamofire.framework.dSYM */,
+				182485FB1BCBA9200087D9F3 /* SwiftyJSON.framework.dSYM */,
+				182485F41BCBA8200087D9F3 /* Alamofire.framework */,
+				182485F51BCBA8200087D9F3 /* SwiftyJSON.framework */,
+			);
+			name = Carthage;
+			sourceTree = "<group>";
+		};
+		30815EC0E8A993096C698B53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4537E19965B6A6BE95DE9278 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C456625C1DFBD024F71AE5EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				682525B91595FDFA437C6C73 /* Pods.debug.xcconfig */,
+				3C2D96B316353639F266D822 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -183,11 +229,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 182485EB1BCBA1F60087D9F3 /* Build configuration list for PBXNativeTarget "Gist" */;
 			buildPhases = (
+				2A2D25E1C8A293FF5861D0BB /* Check Pods Manifest.lock */,
+				185655261BD495E6004D0B22 /* Run Script For R.swift */,
 				182485BD1BCBA1F60087D9F3 /* Sources */,
 				182485BE1BCBA1F60087D9F3 /* Frameworks */,
 				182485BF1BCBA1F60087D9F3 /* Resources */,
-				182485F81BCBA8370087D9F3 /* ShellScript */,
-				182485F91BCBA8DF0087D9F3 /* CopyFiles */,
+				182485F81BCBA8370087D9F3 /* Run Script For Carthage Frameworks */,
+				182485F91BCBA8DF0087D9F3 /* Copy Files For Carthage Frameworks Symbol Files */,
+				83D96D95C520EEA716CA8345 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,7 +353,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		182485F81BCBA8370087D9F3 /* ShellScript */ = {
+		182485F81BCBA8370087D9F3 /* Run Script For Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,12 +362,58 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
 			);
+			name = "Run Script For Carthage Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		185655261BD495E6004D0B22 /* Run Script For R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script For R.swift";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		2A2D25E1C8A293FF5861D0BB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		83D96D95C520EEA716CA8345 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -330,6 +425,7 @@
 				188A221E1BCCD13E0059C12B /* Gist.swift in Sources */,
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
 				188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */,
+				18F6A7501BD497380028C730 /* R.generated.swift in Sources */,
 				182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */,
 				188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */,
 				182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */,
@@ -473,6 +569,7 @@
 		};
 		182485EC1BCBA1F60087D9F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 682525B91595FDFA437C6C73 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -480,6 +577,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Gist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.Gist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,6 +586,7 @@
 		};
 		182485ED1BCBA1F60087D9F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C2D96B316353639F266D822 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -495,6 +594,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Gist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.Gist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -506,6 +606,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GistTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.GistTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,6 +619,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GistTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.GistTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -529,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = GistUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.GistUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -541,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = GistUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.gnou.GistUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
