@@ -12,7 +12,7 @@ import Kingfisher
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var gists = [Gist]()
+    var gists = [GistClass]()
     
     var nextPageURLString: String?
     var isLoading = false
@@ -96,7 +96,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let gist = gists[indexPath.row] as Gist
+                let gist = gists[indexPath.row] as GistClass
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = gist
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -118,7 +118,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        let gist = gists[indexPath.row] as Gist
+        let gist = gists[indexPath.row] as GistClass
         cell.textLabel?.text = gist.description
         cell.detailTextLabel?.text = gist.ownerLogin
         

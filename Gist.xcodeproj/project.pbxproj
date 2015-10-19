@@ -25,7 +25,7 @@
 		1826CE531BD48EF400E3F542 /* Locksmith.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 1826CE521BD48EF400E3F542 /* Locksmith.framework.dSYM */; };
 		186B6D0C1BCD17A700660508 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186B6D0B1BCD17A700660508 /* Kingfisher.framework */; };
 		186B6D0E1BCD17D600660508 /* Kingfisher.framework.dSYM in Copy Files For Carthage Frameworks Symbol Files */ = {isa = PBXBuildFile; fileRef = 186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */; };
-		188A221E1BCCD13E0059C12B /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221D1BCCD13E0059C12B /* Gist.swift */; };
+		188A221E1BCCD13E0059C12B /* GistClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221D1BCCD13E0059C12B /* GistClass.swift */; };
 		188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */; };
 		188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */; };
 		18F6A7501BD497380028C730 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A74F1BD497380028C730 /* R.generated.swift */; settings = {ASSET_TAGS = (); }; };
@@ -90,7 +90,7 @@
 		1826CE521BD48EF400E3F542 /* Locksmith.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Locksmith.framework.dSYM; path = Carthage/Build/iOS/Locksmith.framework.dSYM; sourceTree = "<group>"; };
 		186B6D0B1BCD17A700660508 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		186B6D0D1BCD17D600660508 /* Kingfisher.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Kingfisher.framework.dSYM; path = Carthage/Build/iOS/Kingfisher.framework.dSYM; sourceTree = "<group>"; };
-		188A221D1BCCD13E0059C12B /* Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		188A221D1BCCD13E0059C12B /* GistClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistClass.swift; sourceTree = "<group>"; };
 		188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseJSONObjectSerializable.swift; sourceTree = "<group>"; };
 		188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+JSONSerializable.swift"; sourceTree = "<group>"; };
 		18F6A74F1BD497380028C730 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				182485FE1BCBA9B30087D9F3 /* GitHubAPIManager.swift */,
 				188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */,
 				188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */,
-				188A221D1BCCD13E0059C12B /* Gist.swift */,
+				188A221D1BCCD13E0059C12B /* GistClass.swift */,
 			);
 			path = Gist;
 			sourceTree = "<group>";
@@ -422,7 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188A221E1BCCD13E0059C12B /* Gist.swift in Sources */,
+				188A221E1BCCD13E0059C12B /* GistClass.swift in Sources */,
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
 				188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */,
 				18F6A7501BD497380028C730 /* R.generated.swift in Sources */,

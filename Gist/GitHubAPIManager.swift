@@ -54,10 +54,10 @@ class GitHubAPIManager {
         }
     }
     
-    func getGists(urlString: String, completionHandler: (Result<[Gist]>, String?) -> Void) {
+    func getGists(urlString: String, completionHandler: (Result<[GistClass]>, String?) -> Void) {
         alamofireManager.request(.GET, urlString)
             .validate()
-            .responseArray { (req, res, result: Result<[Gist]>) -> Void in
+            .responseArray { (req, res, result: Result<[GistClass]>) -> Void in
                 guard result.error == nil,
                     let gists = result.value else {
                         print(result.error)

@@ -1,5 +1,5 @@
 //
-//  Gist.swift
+//  GistClass.swift
 //  Gist
 //
 //  Created by CuiMingyu on 10/13/15.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class Gist: ResponseJSONObjectSerializable {
+class GistClass: ResponseJSONObjectSerializable {
     var id: String?
     var description: String?
     var ownerLogin: String?
