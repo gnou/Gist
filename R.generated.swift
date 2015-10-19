@@ -52,13 +52,14 @@ struct R {
     struct main {
       static var initialViewController: UISplitViewController? { return instance.instantiateInitialViewController() as? UISplitViewController }
       static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
+      static var loginViewController: Gist.LoginViewController? { return instance.instantiateViewControllerWithIdentifier("LoginViewController") as? Gist.LoginViewController }
       
       static func validateImages() {
         
       }
       
       static func validateViewControllers() {
-        
+        assert(loginViewController != nil, "[R.swift] ViewController with identifier 'loginViewController' could not be loaded from storyboard 'Main' as 'Gist.LoginViewController'.")
       }
     }
   }

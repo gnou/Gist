@@ -29,6 +29,7 @@
 		188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */; };
 		188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */; };
 		18F6A7501BD497380028C730 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A74F1BD497380028C730 /* R.generated.swift */; settings = {ASSET_TAGS = (); }; };
+		18F6A7521BD4B1D60028C730 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A7511BD4B1D60028C730 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseJSONObjectSerializable.swift; sourceTree = "<group>"; };
 		188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+JSONSerializable.swift"; sourceTree = "<group>"; };
 		18F6A74F1BD497380028C730 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		18F6A7511BD4B1D60028C730 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3C2D96B316353639F266D822 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4537E19965B6A6BE95DE9278 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		682525B91595FDFA437C6C73 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				182485C41BCBA1F60087D9F3 /* AppDelegate.swift */,
 				182485C61BCBA1F60087D9F3 /* MasterViewController.swift */,
+				18F6A7511BD4B1D60028C730 /* LoginViewController.swift */,
 				182485C81BCBA1F60087D9F3 /* DetailViewController.swift */,
 				182485CA1BCBA1F60087D9F3 /* Main.storyboard */,
 				182485CD1BCBA1F60087D9F3 /* Assets.xcassets */,
@@ -422,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F6A7521BD4B1D60028C730 /* LoginViewController.swift in Sources */,
 				188A221E1BCCD13E0059C12B /* GistClass.swift in Sources */,
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
 				188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */,
