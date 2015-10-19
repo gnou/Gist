@@ -42,21 +42,51 @@ class MasterViewController: UITableViewController {
     }
     
     func refresh(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(false, forKey: "loadingOAuthToken")
+        
         nextPageURLString = nil
         loadGists(nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loadGists(nil)
         
-//        GitHubAPIManager.sharedManager.printMyStarredGistsWithBasicAuth()
-        GitHubAPIManager.sharedManager.doGetWithBasicAuth()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if !defaults.boolForKey("loadingOAuthToken") {
+            loadInitialData()
+        }
+    }
+    
+    func loadInitialData() {
+        isLoading = true
+        GitHubAPIManager.sharedManager.OAuthTokenCompletionHandler = { (error) -> Void in
+            if let receivedError = error {
+                print(receivedError)
+                self.isLoading = false
+                self.showOAuthLoginView()
+            } else {
+                self.loadGists(nil)
+            }
+        }
+        
+        if !GitHubAPIManager.sharedManager.hasOAuthToken() {
+            GitHubAPIManager.sharedManager.startOAuth2Login()
+        } else {
+            loadGists(nil)
+        }
+    }
+    
+    func showOAuthLoginView() {
+        if let loginVC = R.storyboard.main.loginViewController {
+            loginVC.delegate = self
+            self.presentViewController(loginVC, animated: true, completion: nil)
+        }
     }
     
     func loadGists(urlToLoad: String?) {
         isLoading = true
-        GitHubAPIManager.sharedManager.getPublisGists(urlToLoad) { (result, nextPage) -> Void in
+        GitHubAPIManager.sharedManager.getMyStarredGists(urlToLoad) { (result, nextPage) -> Void in
             self.nextPageURLString = nextPage
             self.isLoading = false
             
@@ -157,3 +187,12 @@ class MasterViewController: UITableViewController {
 
 }
 
+extension MasterViewController: LoginViewDelegate {
+    func didTapLoginButton() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "loadingOAuthToken")
+        
+        self.dismissViewControllerAnimated(false, completion: nil)
+        GitHubAPIManager.sharedManager.startOAuth2Login()
+    }
+}

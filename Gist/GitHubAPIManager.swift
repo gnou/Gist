@@ -9,8 +9,36 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import UIKit
+import Locksmith
 
 class GitHubAPIManager {
+    
+    let clientID: String = "0aa2f24d091dad51baa9"
+    let clientSecret: String = "767decd12a03db4b461f05b4af7c28668a557add"
+    var OAuthToken: String? {
+        set {
+            if let valueToSave = newValue {
+                do {
+                    try Locksmith.saveData(["token": valueToSave], forUserAccount: "github")
+                } catch {
+                    let _ = try? Locksmith.deleteDataForUserAccount("github")
+                }
+                addSessionHeader("Authorization", value: "token \(valueToSave)")
+            } else {
+                let _ = try? Locksmith.deleteDataForUserAccount("github")
+                removeSessionHeaderIfExists("Authorization")
+            }
+        }
+        get {
+            let dictionary = Locksmith.loadDataForUserAccount("github")
+            if let token = dictionary?["token"] as? String {
+                return token
+            }
+            removeSessionHeaderIfExists("Authorization")
+            return nil
+        }
+    }
     
     private static let sharedInstance = GitHubAPIManager()
     class var sharedManager: GitHubAPIManager {
@@ -46,7 +74,92 @@ class GitHubAPIManager {
         }
     }
     
-    func getPublisGists(pageToLoad: String?, completion: (Result<[Gist]>, String?) -> Void) {
+    //MARK: - OAuth2
+    
+    /// Handler for the OAuth process
+    /// stored as vars since sometimes it requires a round trip to safari which
+    /// make it hard to just keep a refreence to it
+    var OAuthTokenCompletionHandler: (NSError? -> Void)?
+    
+    func hasOAuthToken() -> Bool {
+        if let token = self.OAuthToken {
+            return !token.isEmpty
+        } else {
+            return false
+        }
+    }
+    
+    func startOAuth2Login() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "loadingOAuthToken")
+        
+        let params = "client_id=\(clientID)&scope=gist&state=TEST_STATE"
+        let baseURLString = "https://github.com/login/oauth/authorize?"
+        let authPath: String = baseURLString + params
+        if let authURL: NSURL = NSURL(string: authPath) {
+            print(authURL.absoluteString)
+            UIApplication.sharedApplication().openURL(authURL)
+        }
+        
+    }
+    
+    func processOAuthStep1Response(url: NSURL) {
+        print(url.absoluteString)
+        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var code: String?
+        if let queryItems = components?.queryItems {
+            for queryItem in queryItems {
+                if queryItem.name.lowercaseString == "code" {
+                    code = queryItem.value
+                    break
+                }
+            }
+        }
+        if let receivedCode = code {
+            swapAuthCodeForToken(receivedCode)
+        }
+    }
+    
+    func swapAuthCodeForToken(receivedCode: String) {
+        let getTokenPath: String = "https://github.com/login/oauth/access_token"
+        let tokenParams = ["client_id": clientID, "client_secret": clientSecret, "code": receivedCode]
+        let jsonHeader = ["Accept": "application/json"]
+        Alamofire.request(.POST, getTokenPath, parameters: tokenParams, headers: jsonHeader)
+            .responseString { (request, response, result) -> Void in
+                if let error = result.error {
+                    print(error)
+                    return
+                }
+                if let receivedResults = result.value,
+                    jsonData = receivedResults.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                        let jsonResults = JSON(data: jsonData)
+                        for (key, value) in jsonResults {
+                            switch key {
+                            case "access_token":
+                                self.OAuthToken = value.string
+                            case "scope":
+                                // TODO: verify scope
+                                print("SET SCOPE")
+                            case "token_type":
+                                // TODO: verify is bearer
+                                print("CHECK IF BEARER")
+                            default:
+                                print("got more than I expected from the OAuth token exchange")
+                                print(key)
+                            }
+                        }
+                }
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setBool(false, forKey: "loadingOAuthToken")
+                if self.hasOAuthToken() {
+                    self.printMyStarredGistsWithBasicAuth()
+                }
+        }
+    }
+    
+    // MARK: - Api Functions
+    
+    func getPublisGists(pageToLoad: String?, completion: (Result<[GistClass]>, String?) -> Void) {
         if let urlString = pageToLoad {
             getGists(urlString, completionHandler: completion)
         } else {
@@ -70,6 +183,23 @@ class GitHubAPIManager {
         }
     }
     
+    func getMyStarredGists(pageToLoad: String?, completionHandler: (Result<[GistClass]>, String?) -> Void) {
+        if let urlString = pageToLoad {
+            getGists(urlString, completionHandler: completionHandler)
+        } else {
+            getGists("https://api.github.com/gists/starred", completionHandler: completionHandler)
+        }
+    }
+    
+    func getMyGists(pageToLoad: String?, completionHandler: (Result<[GistClass]>, String?) -> Void) {
+        if let urlString = pageToLoad {
+            getGists(urlString, completionHandler: completionHandler)
+        } else {
+            getGists("https://api.github.com/gists", completionHandler: completionHandler)
+        }
+    }
+    
+    
     private func getNextPageFromHeaders(response: NSHTTPURLResponse?) -> String? {
         if let linkHeader = response?.allHeaderFields["Link"] as? String {
             let components = linkHeader.characters.split { $0 == "," }.map { String($0) }
@@ -91,14 +221,7 @@ class GitHubAPIManager {
     }
     
     func printMyStarredGistsWithBasicAuth() {
-        let username = "gnou"
-        let password = "tpasghbn23GITHUB"
-        
-        let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
-        Alamofire.request(.GET, "https://api.github.com/gists/starred", headers: headers)
+        alamofireManager.request(.GET, "https://api.github.com/gists/starred")
         .responseString { (_, _, result) -> Void in
             if let receivedString = result.value {
                 print(receivedString)
