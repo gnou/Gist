@@ -124,9 +124,9 @@ class MasterViewController: UITableViewController {
         
         if let urlString = gist.ownerAvatarURL,
             url = NSURL(string: urlString) {
-                cell.imageView?.kf_setImageWithURL(url, placeholderImage: UIImage(named: "avatar"))
+                cell.imageView?.kf_setImageWithURL(url, placeholderImage: R.image.placeholder44)
         } else {
-            cell.imageView?.image = UIImage(named: "avatar")
+            cell.imageView?.image = R.image.placeholder44
         }
         
         let rowsToLoadFromBottom = 5
