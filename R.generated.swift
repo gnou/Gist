@@ -29,6 +29,7 @@ struct R {
   
   struct reuseIdentifier {
     static var cell: ReuseIdentifier<UITableViewCell> { return ReuseIdentifier(identifier: "Cell") }
+    static var testCell: ReuseIdentifier<UITableViewCell> { return ReuseIdentifier(identifier: "TestCell") }
   }
   
   struct segue {

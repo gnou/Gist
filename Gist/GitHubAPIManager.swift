@@ -14,8 +14,13 @@ import Locksmith
 
 class GitHubAPIManager {
     
+    // Error Domain
+    static let ErrorDomain = "com.error.GitHubAPIManager"
+    
+    // Client Info from github.com
     let clientID: String = "0aa2f24d091dad51baa9"
     let clientSecret: String = "767decd12a03db4b461f05b4af7c28668a557add"
+    
     var OAuthToken: String? {
         set {
             if let valueToSave = newValue {
@@ -90,6 +95,8 @@ class GitHubAPIManager {
     }
     
     func startOAuth2Login() {
+        var success = false
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setBool(true, forKey: "loadingOAuthToken")
         
@@ -98,13 +105,22 @@ class GitHubAPIManager {
         let authPath: String = baseURLString + params
         if let authURL: NSURL = NSURL(string: authPath) {
             print(authURL.absoluteString)
-            UIApplication.sharedApplication().openURL(authURL)
+            success = UIApplication.sharedApplication().openURL(authURL)
+        }
+        
+        if !success {
+            // TODO: handle
+            defaults.setBool(false, forKey: "loadingOAuthToken")
+            if let completionHandler = self.OAuthTokenCompletionHandler {
+                let error = NSError(domain: GitHubAPIManager.ErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not create an OAuth authorization URL",
+                    NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
+                completionHandler(error)
+            }
         }
         
     }
     
     func processOAuthStep1Response(url: NSURL) {
-        print(url.absoluteString)
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var code: String?
         if let queryItems = components?.queryItems {
@@ -117,6 +133,15 @@ class GitHubAPIManager {
         }
         if let receivedCode = code {
             swapAuthCodeForToken(receivedCode)
+        } else{
+            // no code in URL
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(false, forKey: "loadingOAuthToken")
+            
+            if let completionHandler = self.OAuthTokenCompletionHandler {
+                let noCodeInResponseError = NSError(domain: GitHubAPIManager.ErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth code", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
+                completionHandler(noCodeInResponseError)
+            }
         }
     }
     
@@ -127,7 +152,12 @@ class GitHubAPIManager {
         Alamofire.request(.POST, getTokenPath, parameters: tokenParams, headers: jsonHeader)
             .responseString { (request, response, result) -> Void in
                 if let error = result.error {
-                    print(error)
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setBool(false, forKey: "loadingOAuthToken")
+                    
+                    if let completionHandler = self.OAuthTokenCompletionHandler {
+                        completionHandler(error as NSError)
+                    }
                     return
                 }
                 if let receivedResults = result.value,
@@ -151,8 +181,14 @@ class GitHubAPIManager {
                 }
                 let defaults = NSUserDefaults.standardUserDefaults()
                 defaults.setBool(false, forKey: "loadingOAuthToken")
-                if self.hasOAuthToken() {
-                    self.printMyStarredGistsWithBasicAuth()
+                
+                if let completionHandler = self.OAuthTokenCompletionHandler {
+                    if self.hasOAuthToken() {
+                        completionHandler(nil)
+                    } else {
+                        let noOAuthError = NSError(domain: GitHubAPIManager.ErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
+                        completionHandler(noOAuthError)
+                    }
                 }
         }
     }
@@ -167,9 +203,21 @@ class GitHubAPIManager {
         }
     }
     
+    private func handleUnauthorizedResponse(urlString: String) -> NSError {
+        self.OAuthToken = nil
+        let lostOAuthError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: [NSLocalizedDescriptionKey: "Not logged in", NSLocalizedRecoverySuggestionErrorKey: "please re-enter your github credentials"])
+        return lostOAuthError
+    }
+    
     func getGists(urlString: String, completionHandler: (Result<[GistClass]>, String?) -> Void) {
         alamofireManager.request(.GET, urlString)
-            .validate()
+            .isUnauthorized{ (req, res, result) -> Void in
+                if let unauthorized = result.value where unauthorized == true {
+                    let lostOAuthError = self.handleUnauthorizedResponse(urlString)
+                    completionHandler(Result.Failure(nil, lostOAuthError), nil)
+                    return
+                }
+            }
             .responseArray { (req, res, result: Result<[GistClass]>) -> Void in
                 guard result.error == nil,
                     let gists = result.value else {
@@ -222,10 +270,10 @@ class GitHubAPIManager {
     
     func printMyStarredGistsWithBasicAuth() {
         alamofireManager.request(.GET, "https://api.github.com/gists/starred")
-        .responseString { (_, _, result) -> Void in
-            if let receivedString = result.value {
-                print(receivedString)
-            }
+            .responseString { (_, _, result) -> Void in
+                if let receivedString = result.value {
+                    print(receivedString)
+                }
         }
     }
     
@@ -241,6 +289,69 @@ class GitHubAPIManager {
                 if let receivedString = result.value {
                     print(receivedString)
                 }
+        }
+    }
+    
+    func isGistStarred(gistId: String, completionHandler: (Bool?, NSError?) -> Void) {
+        let urlString = "https://api.github.com/gists/\(gistId)/star"
+        alamofireManager.request(.GET, urlString)
+            .validate(statusCode: [204])
+            .isUnauthorized{ (_, _, result) -> Void in
+                if let unauthorized = result.value where unauthorized {
+                    let lostOAuthError = self.handleUnauthorizedResponse(urlString)
+                    completionHandler(nil, lostOAuthError)
+                    return
+                }
+            }
+            .response { (request, response, data, error) -> Void in
+                if let anError = error as? NSError {
+                    print(anError)
+                    if response?.statusCode == 404 {
+                        completionHandler(false, nil)
+                        return
+                    }
+                    completionHandler(nil, anError)
+                    return
+                }
+                completionHandler(true, nil)
+        }
+    }
+    
+    func starGist(gistId: String, completionHandler: (ErrorType?) -> Void) {
+        let urlString = "https://api.github.com/gists/\(gistId)/star"
+        alamofireManager.request(.PUT, urlString)
+            .isUnauthorized{ (_, _, result) -> Void in
+                if let unauthorized = result.value where unauthorized {
+                    let lostOAuthError = self.handleUnauthorizedResponse(urlString)
+                    completionHandler(lostOAuthError)
+                    return
+                }
+            }
+            .response { (request, response, data, error) -> Void in
+                if let anError = error {
+                    print(anError)
+                    return
+                }
+                completionHandler(error)
+        }
+    }
+    
+    func unstarGist(gistId: String, completionHandler: (ErrorType?) -> Void) {
+        let urlString = "https://api.github.com/gists/\(gistId)/star"
+        alamofireManager.request(.DELETE, urlString)
+            .isUnauthorized{ (_, _, result) -> Void in
+                if let unauthorized = result.value where unauthorized {
+                    let lostOAuthError = self.handleUnauthorizedResponse(urlString)
+                    completionHandler(lostOAuthError)
+                    return
+                }
+            }
+            .response { (request, response, data, error) -> Void in
+                if let anError = error {
+                    print(anError)
+                    return
+                }
+                completionHandler(error)
         }
     }
 }

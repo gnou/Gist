@@ -8,9 +8,12 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
 
 class MasterViewController: UITableViewController {
 
+    @IBOutlet weak var gistSegmentedControl: UISegmentedControl!
+    
     var detailViewController: DetailViewController? = nil
     var gists = [GistClass]()
     
@@ -46,7 +49,7 @@ class MasterViewController: UITableViewController {
         defaults.setBool(false, forKey: "loadingOAuthToken")
         
         nextPageURLString = nil
-        loadGists(nil)
+        loadInitialData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,6 +67,7 @@ class MasterViewController: UITableViewController {
             if let receivedError = error {
                 print(receivedError)
                 self.isLoading = false
+                // Got some error, try again
                 self.showOAuthLoginView()
             } else {
                 self.loadGists(nil)
@@ -72,6 +76,7 @@ class MasterViewController: UITableViewController {
         
         if !GitHubAPIManager.sharedManager.hasOAuthToken() {
             GitHubAPIManager.sharedManager.startOAuth2Login()
+//            self.showOAuthLoginView()
         } else {
             loadGists(nil)
         }
@@ -85,10 +90,9 @@ class MasterViewController: UITableViewController {
     }
     
     func loadGists(urlToLoad: String?) {
-        isLoading = true
-        GitHubAPIManager.sharedManager.getMyStarredGists(urlToLoad) { (result, nextPage) -> Void in
-            self.nextPageURLString = nextPage
+        let completionHandler: (Result<[GistClass]>, String?) -> Void = { (result, nextPage) in
             self.isLoading = false
+            self.nextPageURLString = nextPage
             
             if self.refreshControl != nil && self.refreshControl!.refreshing {
                 self.refreshControl?.endRefreshing()
@@ -96,6 +100,14 @@ class MasterViewController: UITableViewController {
             
             guard result.error == nil else {
                 print(result.error)
+                self.nextPageURLString = nil
+                
+                self.isLoading = false
+                if let error = result.error as? NSError {
+                    if error.domain == NSURLErrorDomain && error.code == NSURLErrorUserAuthenticationRequired {
+                        self.loadInitialData()
+                    }
+                }
                 return
             }
             
@@ -107,6 +119,18 @@ class MasterViewController: UITableViewController {
                 }
             }
             self.tableView.reloadData()
+        }
+        
+        isLoading = true
+        switch gistSegmentedControl.selectedSegmentIndex {
+        case 0:
+            GitHubAPIManager.sharedManager.getPublisGists(urlToLoad, completion: completionHandler)
+        case 1:
+            GitHubAPIManager.sharedManager.getMyStarredGists(urlToLoad, completionHandler: completionHandler)
+        case 2:
+            GitHubAPIManager.sharedManager.getMyGists(urlToLoad, completionHandler: completionHandler)
+        default:
+            print("got unexpected index")
         }
     }
 
@@ -121,6 +145,10 @@ class MasterViewController: UITableViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
 
+    @IBAction func segmentedControlValueChanged(sender: AnyObject) {
+        loadGists(nil)
+    }
+    
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -128,7 +156,7 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let gist = gists[indexPath.row] as GistClass
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = gist
+                controller.gist = gist
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

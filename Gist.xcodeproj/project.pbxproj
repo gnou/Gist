@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AF258992057DC4261A6E6A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4537E19965B6A6BE95DE9278 /* libPods.a */; };
+		181BD5ED1BD7927700EFD329 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BD5EC1BD7927700EFD329 /* File.swift */; settings = {ASSET_TAGS = (); }; };
 		182485C51BCBA1F60087D9F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C41BCBA1F60087D9F3 /* AppDelegate.swift */; };
 		182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C61BCBA1F60087D9F3 /* MasterViewController.swift */; };
 		182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182485C81BCBA1F60087D9F3 /* DetailViewController.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		181BD5EC1BD7927700EFD329 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		182485C11BCBA1F60087D9F3 /* Gist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182485C41BCBA1F60087D9F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		182485C61BCBA1F60087D9F3 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				188A221F1BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift */,
 				188A22211BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift */,
 				188A221D1BCCD13E0059C12B /* GistClass.swift */,
+				181BD5EC1BD7927700EFD329 /* File.swift */,
 			);
 			path = Gist;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				182485C91BCBA1F60087D9F3 /* DetailViewController.swift in Sources */,
 				188A22201BCCD6B60059C12B /* ResponseJSONObjectSerializable.swift in Sources */,
 				18F6A7501BD497380028C730 /* R.generated.swift in Sources */,
+				181BD5ED1BD7927700EFD329 /* File.swift in Sources */,
 				182485FF1BCBA9B30087D9F3 /* GitHubAPIManager.swift in Sources */,
 				188A22221BCCD7240059C12B /* AlamofireRequest+JSONSerializable.swift in Sources */,
 				182485C71BCBA1F60087D9F3 /* MasterViewController.swift in Sources */,
